@@ -1,8 +1,7 @@
 {
-  "name": "Crescentech",
+  "name": "photo-gallery",
   "integrations": {
     "capacitor": {}
   },
-  "type": "react",
-  "id": "49ee080e"
+  "type": "react"
 }
