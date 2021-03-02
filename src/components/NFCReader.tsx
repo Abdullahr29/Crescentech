@@ -3,8 +3,9 @@ import { usePhotoGallery, Photo } from '../hooks/usePhotoGallery';
 import { camera, trash, close } from 'ionicons/icons';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
          IonFab, IonFabButton, IonIcon, IonGrid, IonRow,
-         IonCol, IonImg, IonActionSheet } from '@ionic/react';
+         IonCol, IonImg, IonActionSheet, IonLoading } from '@ionic/react';
 import "../components/NFCReader.css";
+
 
 /** Type for the possible steps of the app */
 type TStep =
@@ -14,7 +15,10 @@ type TStep =
 	| "waitingForNfcEnabled"
 	| "waitingForTag"
 	| "cancelled"
-	| "tagRead";
+	| "tagRead"
+	| "tagWait"
+	| "readingStarted";
+
 
 const NFCReader: React.FC = () => {
 	const [step, setStep] = React.useState<TStep>("initializing");
@@ -22,6 +26,13 @@ const NFCReader: React.FC = () => {
 
 	// Initialize NFC when the app is started
 	React.useEffect(initializeNfc, []);
+
+	const [showLoading, setShowLoading] = useState(true);
+
+	//const [val, setVal] = 0;
+
+  	
+
 
 	function initializeNfc() {
 		// If nfc is undefined, NFC is not available on this device, or
@@ -38,6 +49,60 @@ const NFCReader: React.FC = () => {
 		}
 	}
 
+	function onSuccess() {
+		setShowLoading(true)
+	}
+
+	function onFailure() {
+		setShowLoading(true)
+	}
+
+	function startNfc(){
+		setTimeout(() => {
+			startmainNfc();
+		  }, 20000);
+		startNfcA();
+	}
+
+	function startNfcA() {
+		nfc.addNdefListener(
+			onNdefEvent
+		);
+
+		//setShowLoading(true)
+		// nfc.addTagDiscoveredListener(async function(nfcEvent:any) {
+		// 	await nfc.connect('android.nfc.tech.IsoDep', 500).then(
+		// 		() => console.log('connected to', nfc.bytesToHexString(nfcEvent.tag.id)),
+		// 		(error:any) => console.log('connection failed', error)
+		// 	);
+		// })
+		// nfc.addTagDiscoveredListener(async function(nfcEvent:any)
+		
+
+		// );
+	}
+
+	function startmainNfc() {
+		nfc.addNdefListener(
+			mainNdefEvent
+		);
+
+		
+
+		//setShowLoading(true)
+		// nfc.addTagDiscoveredListener(async function(nfcEvent:any) {
+		// 	await nfc.connect('android.nfc.tech.IsoDep', 500).then(
+		// 		() => console.log('connected to', nfc.bytesToHexString(nfcEvent.tag.id)),
+		// 		(error:any) => console.log('connection failed', error)
+		// 	);
+		// })
+		// nfc.addTagDiscoveredListener(async function(nfcEvent:any)
+		
+
+		// );
+		setStep("tagWait");
+	}
+
 	function onGoToSettingsClick() {
 		if (typeof nfc !== "undefined") {
 			// Ask the device to open the NFC settings for the user
@@ -50,7 +115,23 @@ const NFCReader: React.FC = () => {
 
 	function onNdefEvent(e: PhoneGapNfc.TagEvent) {
 		// Unregister the event listener
-		nfc.removeNdefListener(onNdefEvent);
+		//nfc.removeNdefListener(onNdefEvent);
+		
+
+		// setTagContent(
+		// 	// Retrieve the payload of the tag and decode it
+		// 	// https://www.oreilly.com/library/view/beginning-nfc/9781449324094/ch04.html
+		// 	ndef.textHelper.decodePayload(
+		// 		(e as PhoneGapNfc.NdefTagEvent).tag.ndefMessage[0].payload
+		// 	)
+		// );
+
+		// setStep("tagRead");
+	}
+	function mainNdefEvent(e: PhoneGapNfc.TagEvent) {
+		// Unregister the event listener
+		//nfc.removeNdefListener(onNdefEvent);
+		startNfc();
 
 		setTagContent(
 			// Retrieve the payload of the tag and decode it
@@ -68,8 +149,8 @@ const NFCReader: React.FC = () => {
 			// Unregister the event listener
 			nfc.removeNdefListener(onNdefEvent);
 		}
-
-		setStep("cancelled");
+		setTagContent("");
+		setStep("waitingForTag");
 	}
 
 	return (
@@ -97,6 +178,18 @@ const NFCReader: React.FC = () => {
 			) : step === "waitingForTag" ? (
 				<div>
 					<div>Scan a NFC Tag to see its content</div>
+					<button onClick={startNfc}>Start NFC Reader</button>
+				</div>
+			) : step === "tagWait" ? (
+				<div>
+					<div>Scanning the tag:</div>
+					<IonLoading
+        				isOpen={showLoading}
+        				message={'Please wait...'}
+						onDidDismiss={() => setShowLoading(false)}
+        				duration={5000}
+      				/>
+					<div>{tagContent}</div>
 					<button onClick={onStopClick}>Stop NFC Reader</button>
 				</div>
 			) : step === "tagRead" ? (

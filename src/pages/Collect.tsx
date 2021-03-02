@@ -2,15 +2,14 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import {NFC, Ndef} from '@ionic-native/nfc';
 import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
 import NFCReader from '../components/NFCReader';
 
-const Tab1: React.FC = () => {
+const Collect: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Collect</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -20,4 +19,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default Collect;

@@ -7,13 +7,17 @@ import {
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonTabs,
+  IonButton, IonButtons, IonMenuButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonInput, IonGrid, IonCol,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { images, ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { images, ellipse, square, triangle, star } from 'ionicons/icons';
+import Collect from './pages/Collect';
+import Sync from './pages/Sync';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
+import Context from "./context";
+import NavBar from "./components/NavBar";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,36 +40,52 @@ import './theme/variables.css';
 
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
+import AuthContext from "./context"
+
 // Call the element loader after the platform has been bootstrapped
 defineCustomElements(window);
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Photos</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+
+  const { authValues } = React.useContext(AuthContext);
+  return (
+    <IonApp>
+      <NavBar/>
+      {/* {!authValues.authenticated ? (
+        <IonReactRouter>
+          <Route path="/login" component={Login} />
+          <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
+          <Route path="*" render={() => <Redirect to="/login" />} exact={true} />
+        </IonReactRouter>
+      ) : ( */}
+          <IonReactRouter>
+            <IonTabs>
+              <IonRouterOutlet>
+                <Route path="/collect" component={Collect} exact={true} />
+                <Route path="/" render={() => <Redirect to="/collect" />} exact={true} />
+                <Route path="/sync" component={Sync} exact={true} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/register" component={Login} />
+              </IonRouterOutlet>
+              <IonTabBar slot="bottom">
+                <IonTabButton tab="collect" href="/collect">
+                  <IonIcon icon={triangle} />
+                  <IonLabel>Collect Data</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="sync" href="/sync">
+                  <IonIcon icon={ellipse} />
+                  <IonLabel>Upload Data</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="profile" href="/profile">
+                  <IonIcon icon={square} />
+                  <IonLabel>Profile</IonLabel>
+                </IonTabButton>
+              </IonTabBar>
+            </IonTabs>
+          </IonReactRouter>
+        {/*)}*/}
+    </IonApp >
+  )
+};
 
 export default App;
