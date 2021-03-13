@@ -1,0 +1,44 @@
+ion-content{
+  --ion-background: #CEDA95;
+  --ion-background-color: #CEDA95;
+}
+
+.displayed {
+  border-radius: 10px;
+}
+
+ion-page{
+  --ion-background: #CEDA95;
+  --ion-background-color: #CEDA95;
+}
+
+.yousuck{
+  background-color: #DEE4B4;
+}
+ion-card{
+  --ion-background: #DEE4B4;
+}
+
+ion-col{
+  --ion-background: #CEDA95;
+  --ion-background-color: #CEDA95;
+}
+
+ion-button{
+  --ion-background: #61873D;
+  --ion-color: #ffffff;
+}
+
+p{
+  color: #311c01;
+  font-size: 16px;
+}
+
+g{
+  color: #DEE4B4;
+  font-size: 8px;
+}
+
+u{
+  color: #61873D;
+}

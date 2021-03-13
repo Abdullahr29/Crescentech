@@ -3,6 +3,7 @@ import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIte
 
 import AuthContext from "../context"
 import { useHistory } from 'react-router';
+import './login.css';
 
 const Login: React.FC = () => {
 
@@ -18,27 +19,39 @@ const Login: React.FC = () => {
   }
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Welcome</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen className="ion-padding">
-        <IonGrid>
-          <IonCol size="3">
-            <IonItem>
-              <IonInput placeholder="Username" ></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonInput type = "password" placeholder="Password" ></IonInput>
-            </IonItem>
-            <IonButton onClick={() => doLogin()}>Login</IonButton>
-          </IonCol>
-          <IonCol size="6"></IonCol>
-        </IonGrid>
-      </IonContent>
-    </IonPage>
+    
+            <div className="login">
+
+            <h1>Log in!</h1>
+            <h2>Fill in with your details to log in</h2>
+  
+  
+            <div className="card card-login">
+              <form >
+                <input
+                  className="login-input"
+
+                  name="email"
+                  placeholder="Email"
+
+                />
+                <input
+                  className="login-input"
+
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+
+                />
+                <input className="login-submit btn" type="submit" value="Log in" />
+              </form>
+            </div>
+  
+            <p><a href="/forgotpass">Forgot password</a></p>
+            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+  
+          </div>
+  
   );
 };
 

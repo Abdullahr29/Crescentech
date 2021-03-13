@@ -1,0 +1,65 @@
+.h {
+    border-bottom: 1px solid rgb(31, 30, 30, 0.479);
+    border-right: 1px solid rgba(31, 30, 30, 0.479);
+    background: #FBFFF3;
+    text-align: center;
+    color:#221401;
+}
+
+.head{
+    border-bottom: 1px solid rgba(31, 30, 30, 0.479);
+    border-right: 1px solid rgba(31, 30, 30, 0.479);
+    background: #FBFFF3;
+    text-align: center;
+    font-weight: bold;
+    color:#221401;
+}
+.hed{
+    border-bottom: 1px solid rgba(31, 30, 30, 0.479);
+    background: #FBFFF3;
+    text-align: center;
+    color:#221401;
+}
+.hde{
+    border-bottom: 1px solid rgba(31, 30, 30, 0.479);
+    background: #FBFFF3;
+    text-align: center;
+    font-weight: bold;
+    color:#221401;
+}
+
+.had{
+    background: #FBFFF3;
+    border-right: 1px solid rgba(31, 30, 30, 0.479);
+    text-align: center;
+    color:#221401;
+}
+.hd{
+    background: #FBFFF3;
+    text-align: center;
+    color:#221401;
+}
+
+ion-grid{
+    border-collapse:separate;
+    border-radius:6px;
+    -moz-border-radius:6px;
+    background-color: #FBFFF3;
+}
+ion-row{
+    border-radius: 10px;
+}
+
+.done{
+    color:#289911;
+}
+
+.doe{
+    border-collapse:separate;
+    border-radius:6px;
+    -moz-border-radius:6px;
+}
+
+.notdone{
+    color:#c91717;
+}

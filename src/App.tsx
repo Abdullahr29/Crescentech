@@ -11,7 +11,7 @@ import {
   IonButton, IonButtons, IonMenuButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonInput, IonGrid, IonCol,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { images, ellipse, square, triangle, star } from 'ionicons/icons';
+import {cloudUploadOutline, personCircleOutline, radioOutline} from 'ionicons/icons';
 import Collect from './pages/Collect';
 import Sync from './pages/Sync';
 import Profile from './pages/Profile';
@@ -51,13 +51,13 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <NavBar/>
-      {/* {!authValues.authenticated ? (
+      {!authValues.authenticated ? (
         <IonReactRouter>
           <Route path="/login" component={Login} />
           <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
           <Route path="*" render={() => <Redirect to="/login" />} exact={true} />
         </IonReactRouter>
-      ) : ( */}
+      ) : (  
           <IonReactRouter>
             <IonTabs>
               <IonRouterOutlet>
@@ -69,21 +69,21 @@ const App: React.FC = () => {
               </IonRouterOutlet>
               <IonTabBar slot="bottom">
                 <IonTabButton tab="collect" href="/collect">
-                  <IonIcon icon={triangle} />
+                  <IonIcon icon={radioOutline} />
                   <IonLabel>Collect Data</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="sync" href="/sync">
-                  <IonIcon icon={ellipse} />
+                  <IonIcon icon={cloudUploadOutline} />
                   <IonLabel>Upload Data</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="profile" href="/profile">
-                  <IonIcon icon={square} />
+                  <IonIcon icon={personCircleOutline} />
                   <IonLabel>Profile</IonLabel>
                 </IonTabButton>
               </IonTabBar>
             </IonTabs>
           </IonReactRouter>
-        {/*)}*/}
+       )} 
     </IonApp >
   )
 };
