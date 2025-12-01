@@ -3,10 +3,10 @@
 Crescentech is an Ionic React mobile web app that helps farmers trace and record the spread of fusarium in their crops. The app focuses on quick field data capture with NFC tags, location stamping, and simple syncing so growers can monitor infection results and share them for analysis.
 
 ## Features
-- **NFC-driven sample capture:** The Collect tab walks users through enabling NFC and scanning tagged samples, then shows the decoded tag payload for logging fusarium test data. See [Collect.tsx (lines 1–18)](src/pages/Collect.tsx#L1-L18) and [NFCReader.tsx (lines 1–141)](src/components/NFCReader.tsx#L1-L141).
-- **Field result review:** The Upload Data tab shows recent sample titles, dates, and fusarium results alongside sync status icons, with a placeholder Upload button for pushing results to the backend analysis site. See [Sync.tsx (lines 1–74)](src/pages/Sync.tsx#L1-L74) and [Table.tsx (lines 1–71)](src/pages/Table.tsx#L1-L71).
-- **Location capture utility:** A reusable geolocation button retrieves GPS coordinates to pair field readings with their precise location. See [Location.tsx (lines 1–39)](src/components/Location.tsx#L1-L39).
-- **Authentication shell:** Basic login and profile screens gate the data capture experience and allow the user to log out or navigate to registration flows. See [Login.tsx (lines 1–43)](src/pages/Login.tsx#L1-L43), [Profile.tsx (lines 1–26)](src/pages/Profile.tsx#L1-L26), and [App.tsx (lines 1–64)](src/App.tsx#L1-L64).
+- **NFC-driven sample capture:** The Collect tab walks users through enabling NFC and scanning tagged samples, then shows the decoded tag payload for logging fusarium test data.【F:src/pages/Collect.tsx†L1-L18】【F:src/components/NFCReader.tsx†L1-L141】
+- **Field result review:** The Upload Data tab shows recent sample titles, dates, and fusarium results alongside sync status icons, with a placeholder Upload button for pushing results to the backend analysis site.【F:src/pages/Sync.tsx†L1-L74】【F:src/pages/Table.tsx†L1-L71】
+- **Location capture utility:** A reusable geolocation button retrieves GPS coordinates to pair field readings with their precise location.【F:src/components/Location.tsx†L1-L39】
+- **Authentication shell:** Basic login and profile screens gate the data capture experience and allow the user to log out or navigate to registration flows.【F:src/pages/Login.tsx†L1-L43】【F:src/pages/Profile.tsx†L1-L26】【F:src/App.tsx†L1-L64】
 
 ## Project Structure
 - `src/App.tsx`: App shell with routing across Collect, Upload Data, and Profile tabs.
@@ -36,9 +36,9 @@ Crescentech is an Ionic React mobile web app that helps farmers trace and record
    - Open the native project in Android Studio/Xcode to run on devices.
 
 ## Environment & APIs
-- NFC interactions rely on the PhoneGap NFC plugin and must run on devices with NFC hardware and permissions enabled. See [NFCReader.tsx (lines 11–109)](src/components/NFCReader.tsx#L11-L109).
-- Geolocation uses `@ionic-native/geolocation`, which requires runtime permissions on mobile platforms. See [Location.tsx (lines 1–39)](src/components/Location.tsx#L1-L39).
-- Authentication requests target the existing backend at `https://evening-eyrie-40887.herokuapp.com/api/auth`. Update `src/context.tsx` if the endpoint changes. See [context.tsx (lines 1–47)](src/context.tsx#L1-L47).
+- NFC interactions rely on the PhoneGap NFC plugin and must run on devices with NFC hardware and permissions enabled.【F:src/components/NFCReader.tsx†L11-L109】
+- Geolocation uses `@ionic-native/geolocation`, which requires runtime permissions on mobile platforms.【F:src/components/Location.tsx†L1-L39】
+- Authentication requests target the existing backend at `https://evening-eyrie-40887.herokuapp.com/api/auth`. Update `src/context.tsx` if the endpoint changes.【F:src/context.tsx†L1-L47】
 
 ## Suggested visuals
 To make the README more inviting, consider adding:
