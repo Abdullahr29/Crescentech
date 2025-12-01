@@ -43,5 +43,5 @@ Crescentech is an Ionic React mobile web app that helps farmers trace and record
 - Authentication requests target the existing backend at `https://evening-eyrie-40887.herokuapp.com/api/auth`. Update `src/context.tsx` if the endpoint changes.
 
 ## App Screenshots
-![Data](Figures/capture.PNG)
+![Data](Figures/screenshot.png)
 ![Map](Figures/mapping.png)
